@@ -5,25 +5,26 @@ import java.util.List;
 public class BigO {
 
     public static void main(String[] args) {
-        int[] array = new int[] {1, 2, 3 ,4};
-        int[] arrayB = new int[] {5, 6, 7, 1};
-        foo(array);
-        printPairs(array);
-        printUnorderedPairs(array);
-        printUnorderedPairs(array, arrayB);
-        printUnorderedPairs2(array, arrayB);
-        reserse(array);
-        Node node  = new Node(1);
-        node.left = new Node(2);
-        node.left.left = new Node(3);
-        node.left.right = new Node(4);
-        node.right = new Node(5);
-        node.right.left = new Node(6);
-        node.right.right = new Node(7);
-        System.out.println("Sum "+ sum(node));
-        System.out.println(isPrime(3));
-        System.out.println(factorial(5));
-        sum();
+        // int[] array = new int[] {1, 2, 3 ,4};
+        // int[] arrayB = new int[] {5, 6, 7, 1};
+        // foo(array);
+        // printPairs(array);
+        // printUnorderedPairs(array);
+        // printUnorderedPairs(array, arrayB);
+        // printUnorderedPairs2(array, arrayB);
+        // reserse(array);
+        // Node node  = new Node(1);
+        // node.left = new Node(2);
+        // node.left.left = new Node(3);
+        // node.left.right = new Node(4);
+        // node.right = new Node(5);
+        // node.right.left = new Node(6);
+        // node.right.right = new Node(7);
+        // System.out.println("Sum "+ sum(node));
+        // System.out.println(isPrime(3));
+        // System.out.println(factorial(5));
+        // sum();
+        permutation("ABC");
     }
 
     //O(n)
@@ -133,6 +134,24 @@ public class BigO {
         System.out.println(sum1);
         System.out.println(sum2);
         System.out.println(sum3);
+    }
+
+    static void permutation(String str){
+        permutation(str, "");
+    }
+
+    //O(n*n!)
+    static void permutation(String str, String prefix){
+        System.out.println("prefix: "+prefix);
+        if(str.length() == 0){
+            System.out.println(prefix);
+        }else{
+            for(int i = 0; i < str.length(); i++){
+                String rem = str.substring(0, i) + str.substring(i+1);
+                System.out.println("rem: "+rem);
+                permutation(rem, prefix + str.charAt(i));
+            }
+        }
     }
     
 }
