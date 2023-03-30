@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class BigO {
 
     public static void main(String[] args) {
@@ -17,6 +21,9 @@ public class BigO {
         node.right.left = new Node(6);
         node.right.right = new Node(7);
         System.out.println("Sum "+ sum(node));
+        System.out.println(isPrime(3));
+        System.out.println(factorial(5));
+        sum();
     }
 
     //O(n)
@@ -94,6 +101,38 @@ public class BigO {
             return 0;
         }
         return sum(node.left) + node.data + sum(node.right);
+    }
+
+    //O(square root n)
+    static boolean isPrime(int n){
+        for(int x = 2; x*x <= n; x++){
+            if(n % x == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //O(n)
+    static int factorial(int n){
+        if(n<0){
+            return -1;
+        }else if(n==0){
+            return 1;
+        }else{
+            return n * factorial(n-1);
+        }
+    }
+
+    public static void sum(){
+        int [] nums = {1,2,3,4,5};
+        List<Integer> ars = Arrays.asList(1,2,3,4,5);
+        Integer sum1 = Arrays.stream(nums).sum();
+        Integer sum2 = ars.stream().reduce(0, Integer::sum);
+        Integer sum3 = ars.stream().mapToInt(Integer::intValue).sum();
+        System.out.println(sum1);
+        System.out.println(sum2);
+        System.out.println(sum3);
     }
     
 }
