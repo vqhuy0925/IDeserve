@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,6 +26,8 @@ public class BigO {
         sum();
         permutation("ABC");
         showHiddenFiles();
+        System.out.println(fib(5));
+        System.out.println(calculateModulus("GB29NWBK60161331926819"));
     }
 
     //O(n)
@@ -163,7 +164,33 @@ public class BigO {
             System.out.println("File name: "+file.getName());
         }
     }
-    
+
+    static int fib(int n){
+        if(n <=0 ) return 0;
+        else if(n == 1) return 1;
+        return fib(n-1) + fib( n- 2);
+    }    
+
+    static int calculateModulus(String code) {
+        System.out.println("input "+ code);
+        String reformattedCode = code.substring(4) + code.substring(0, 4); // CHECKSTYLE IGNORE MagicNumber
+        System.out.println("reformattedCode "+ reformattedCode);
+        long total = 0;
+        for (int i = 0; i < reformattedCode.length(); i++) {
+            int charValue = Character.getNumericValue(reformattedCode.charAt(i));
+            System.out.println(reformattedCode.charAt(i) + " "+ charValue);
+            if (charValue < 0 || charValue > 35) {
+                System.out.println("Invalid");
+            }
+            total = (charValue > 9 ? total * 100 : total * 10) + charValue; // CHECKSTYLE IGNORE MagicNumber
+            System.out.println("total temp "+ total);
+            if (total > 999999999) {
+                total = total % 97;
+            }
+        }
+        System.out.println("total "+total);
+        return (int)(total % 97);
+    }
 }
 class Node{
     int data;
